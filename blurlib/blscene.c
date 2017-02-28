@@ -33,6 +33,7 @@ void bl_scene_update(struct Bl_Scene *scene)
 	}
 }
 
+
 void bl_destroy_scene(struct Bl_Scene *scene)
 {
 	bl_destroy_list(scene->entities);
