@@ -6,18 +6,20 @@
 
 #define MAX_ENTITIES 100
 
-typedef void(*Bl_Event_Scene)(struct Bl_Scene *);
+typedef void(Bl_Event_Scene)(struct Bl_Scene *);
 
 typedef struct Bl_Scene
 {
 	char *id;
 
+	void *data;
+
 	List *entities;
 
-	Bl_Event_Scene on_init;
-	Bl_Event_Scene on_load;
-	Bl_Event_Scene on_update;
-	Bl_Event_Scene on_exit;
+	Bl_Event_Scene *on_init;
+	Bl_Event_Scene *on_load;
+	Bl_Event_Scene *on_update;
+	Bl_Event_Scene *on_exit;
 } Scene;
 
 // Setup a new Scene

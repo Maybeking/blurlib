@@ -4,6 +4,7 @@
 #include "blcore.h"
 #include "blentity.h"
 #include "blrect.h"
+#include "blevent.h"
 
 
 struct Bl_Core *bl_create_app(char *app_name, int width, int height)
@@ -60,14 +61,16 @@ void bl_core_run(int fps)
 {
 	SDL_Event event;
 
+	// bl_event_init();
+
 	while (!_bl_app.done)
 	{
-		while (SDL_PollEvent(&event))
+
+		bl_update_event();
+
+		if (bl_event_is_key_pressed(SDL_SCANCODE_ESCAPE))
 		{
-			if (event.type == SDL_QUIT)
-			{
-				_bl_app.done = 1;
-			}
+			_bl_app.done = 1;
 		}
 
 
@@ -116,7 +119,6 @@ static void bl_core_draw()
 	if (_scene == NULL)
 		return;
 
-
 	bl_list_foreach_data(_scene->entities, &bl_core_render_entity);
 
 	SDL_RenderPresent(_bl_app.screen);
@@ -124,7 +126,9 @@ static void bl_core_draw()
 
 int bl_core_render_entity(List *list, Entity* entity)
 {
-	return SDL_RenderCopy(_bl_app.screen, entity->texture, entity->texture_clip, bl_entity_display_texture_rect(entity));
+	if (entity->texture != NULL)
+		return SDL_RenderCopy(_bl_app.screen, entity->texture, entity->texture_clip, bl_entity_display_texture_rect(entity));
+	return 0;
 }
 
 static void bl_core_exit()

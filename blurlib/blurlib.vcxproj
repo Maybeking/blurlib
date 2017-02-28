@@ -150,6 +150,7 @@
   <ItemGroup>
     <ClInclude Include="blcore.h" />
     <ClInclude Include="blentity.h" />
+    <ClInclude Include="blevent.h" />
     <ClInclude Include="blscene.h" />
     <ClInclude Include="blrect.h" />
     <ClInclude Include="blsystem.h" />
@@ -162,6 +163,7 @@
   <ItemGroup>
     <ClCompile Include="blcore.c" />
     <ClCompile Include="blentity.c" />
+    <ClCompile Include="blevent.c" />
     <ClCompile Include="blrect.c" />
     <ClCompile Include="blscene.c" />
     <ClCompile Include="blpoint.c" />

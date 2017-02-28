@@ -4,6 +4,7 @@
 
 #include "blcore.h"
 #include "blentity.h"
+#include "blevent.h"
 #include "bllist.h"
 #include "blpoint.h"
 #include "blrect.h"
